@@ -6,6 +6,18 @@
         {
             ParserTXT p = new ParserTXT();
 
+            //TestFit(p);
+            TestGenetic(p);
+        }
+
+        static void TestGenetic(ParserTXT p)
+        {
+            BinPacking[] bp = p.binpackParser($"binpack{1}.txt");
+            Console.WriteLine(bp[0].GeneticAlgorithm(10000));
+        }
+
+        static void TestFit(ParserTXT p)
+        {
             for (int i = 1; i <= 4; ++i)
             {
                 BinPacking[] bp = p.binpackParser($"binpack{i}.txt");
