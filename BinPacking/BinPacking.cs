@@ -85,7 +85,7 @@ namespace BinPacking
 
         (int[], int[]) TournamentSelection(List<int[]> P)
         {
-            List<int[]> tour = P;
+            List<int[]> tour = P.ToList();
             tour.Shuffle();
 
             Random r = new Random();
@@ -162,8 +162,6 @@ namespace BinPacking
         {
             List<int[]> P = FirstPopulation(10);
             (int F, int BestPos) = Record(P);
-            Console.WriteLine(bestie);
-            Console.WriteLine(F);
 
             while (n-- > 0)
             {

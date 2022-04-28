@@ -5,15 +5,33 @@
         static void Main()
         {
             ParserTXT p = new ParserTXT();
+            ExcelExport exp = new ExcelExport();
 
             //TestFit(p);
-            TestGenetic(p);
+            exp.Save(TestGenetic(p), "laba2");
         }
 
-        static void TestGenetic(ParserTXT p)
+        static Dictionary<string, int[]> TestGenetic(ParserTXT p)
         {
-            BinPacking[] bp = p.binpackParser($"binpack{4}.txt");
-            Console.WriteLine(bp[0].GeneticAlgorithm(100000));
+            BinPacking[] bp = p.binpackParser($"binpack{2}.txt");
+            Dictionary<string, int[]> ex = new Dictionary<string, int[]>();
+
+            int[] best = new int[bp.Length];
+            int[] myval = new int[bp.Length];
+            for (int j = 0; j < bp.Length; ++j)
+            {
+                //Console.WriteLine($"START TEST {bp[j].Name}");
+                int result = bp[j].GeneticAlgorithm(10000);
+                //Console.WriteLine(result);
+
+                best[j] = bp[j].Bestie;
+                myval[j] = result;
+            }
+
+            ex.Add("bestie", best);
+            ex.Add("result", myval);
+
+            return ex;
         }
 
         static void TestFit(ParserTXT p)
