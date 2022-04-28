@@ -83,6 +83,22 @@ namespace BinPacking
             return (S1, S2);
         }
 
+        (int[], int[]) TournamentSelection(List<int[]> P)
+        {
+            List<int[]> tour = P;
+            tour.Shuffle();
+
+            Random r = new Random();
+            int rp = r.Next(1, P.Count - 1);
+            List<int[]> p1 = tour.GetRange(0, rp);
+            List<int[]> p2 = tour.GetRange(rp, P.Count - rp);
+
+            int[] S1 = p1[Record(p1).Item2];
+            int[] S2 = p2[Record(p2).Item2]; ;
+
+            return (S1, S2);
+        }
+
         int[] Crossing(int[] S1, int[] S2)
         {
             Random r = new Random();
@@ -144,7 +160,7 @@ namespace BinPacking
 
         public int GeneticAlgorithm(int n)
         {
-            List<int[]> P = FirstPopulation(5);
+            List<int[]> P = FirstPopulation(10);
             (int F, int BestPos) = Record(P);
             Console.WriteLine(bestie);
             Console.WriteLine(F);
@@ -152,6 +168,7 @@ namespace BinPacking
             while (n-- > 0)
             {
                 (int[] S1, int[] S2) = Options(P, BestPos);
+                //(int[] S1, int[] S2) = TournamentSelection(P);
                 int[] dS = Crossing(S1, S2);
                 int[] ddS = Mutation(dS);
                 int[] dddS = LocalImprove(ddS);

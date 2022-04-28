@@ -12,8 +12,8 @@
 
         static void TestGenetic(ParserTXT p)
         {
-            BinPacking[] bp = p.binpackParser($"binpack{1}.txt");
-            Console.WriteLine(bp[0].GeneticAlgorithm(10000));
+            BinPacking[] bp = p.binpackParser($"binpack{4}.txt");
+            Console.WriteLine(bp[0].GeneticAlgorithm(100000));
         }
 
         static void TestFit(ParserTXT p)
