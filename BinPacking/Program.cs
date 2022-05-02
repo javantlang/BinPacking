@@ -13,7 +13,7 @@
 
         static Dictionary<string, int[]> TestGenetic(ParserTXT p)
         {
-            BinPacking[] bp = p.binpackParser($"binpack{2}.txt");
+            BinPacking[] bp = p.binpackParser($"binpack{4}.txt");
             Dictionary<string, int[]> ex = new Dictionary<string, int[]>();
 
             int[] best = new int[bp.Length];

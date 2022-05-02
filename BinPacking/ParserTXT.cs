@@ -33,7 +33,7 @@
                 try
                 {
                     string name = reader.ReadLine().Remove(0, 1);
-                    int[] values = Array.ConvertAll(reader.ReadLine().Remove(0, 1).Split(' '), int.Parse);
+                    int[] values = Array.ConvertAll(reader.ReadLine().Split(' '), int.Parse);
                     int[] weight = new int[values[1]];
 
                     for (int i = 0; i < values[1]; ++i)
